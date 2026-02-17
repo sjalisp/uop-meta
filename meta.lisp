@@ -1,3 +1,6 @@
+;;;; uop-meta.lisp
+
+(in-package #:uop-meta)
 (in-package :cw-uop)
 
 (defclass meta-permissions ()
@@ -62,13 +65,13 @@
   ((reverse_name :accessor reverse-name :initarg :reverse-name :type 'string)))
 
 (defclass associated ()
+  ((assoc-id :reader assoc-id :initarg :assoc-id :type 'string)
+   (object-id :reader object-id :initarg :object-id :type 'string)))
 
-
-(defclass related ()
-    ((assoc-id :reader assoc-id :initarg :assoc-id :type 'string)
-   (object-id :reader object-id :initarg :object-id :type 'string)
-   (subject-id :reader subject-id :initarg :subject-id :type 'string)))
-
+(defclass tagged (associated)())
+(defclass grouped (associated)())
+(defclass related (associated)
+  ((subject-id :reader subject-id :initarg :subject-id :type 'string)))
 
 
 (defclass meta-context ()
